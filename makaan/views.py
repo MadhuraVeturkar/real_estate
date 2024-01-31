@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, auth
-from .models import Properties
+from .models import Properties, Contact
+from django.db.models import Q
+
 
 # Create your views here.
 def index(request):
@@ -31,11 +33,50 @@ def add_property(request):
         return redirect('/add_property')
     return render(request,'add_property.html',{})
 
+def search_property(request):
+    if request.method =="POST":
+        keyword=request.POST['keyword']
+        type=request.POST['type']
+        location=request.POST['location']
+
+        properties = Properties.objects.filter(
+            Q(title__icontains=keyword) |
+            Q(description__icontains=keyword) &
+            Q(property_type__icontains=type) &
+            Q(location__icontains=location)
+            )
+
+    return render(request, 'property-search.html',{"properties":properties})
+
+def property_list(request):
+    properties = Properties.objects.all()
+    return render(request,'property-list.html',{"properties":properties})
+
+def property_type(request):
+    return render(request,'property-type.html',{})
+
+def property_agent(request):
+    return render(request,'property-agent.html',{})
+
 def about(request):
     return render(request,'about.html',{})
 
 def contact(request):
+    if request.method =="POST":
+        name=request.POST['name']
+        email=request.POST['email']
+        subject=request.POST['subject']
+        message=request.POST.get("message")
+
+        new_con = Contact.objects.create(name=name,email=email,subject=subject,message=message)
+        print("Contact form saved successfully!!,",new_con)
+
+        return redirect("/")
+
     return render(request,'contact.html',{})
+
+def testimonial(request):
+    return render(request,'testimonial.html',{})
 
 
 def signup(request):

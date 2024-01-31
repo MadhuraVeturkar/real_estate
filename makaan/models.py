@@ -1,5 +1,5 @@
 from django.db import models
-
+from datetime import date
 # Create your models here.
 class Properties(models.Model):
     title = models.CharField(max_length=50)
@@ -15,7 +15,7 @@ class Properties(models.Model):
         ('garage', 'Garage'),
         ]
     property_type = models.CharField(max_length=50, choices=types_list)
-    status_list = [('on_sale', 'On Sale'), ('on_rent', 'On Rent')]
+    status_list = [('featured', 'Featured'), ('on_sale', 'On Sale'), ('on_rent', 'On Rent')]
     property_status = models.CharField(max_length=50, choices=status_list)
     location = models.CharField(max_length=100)
     bedrooms = models.IntegerField()
@@ -30,4 +30,16 @@ class Properties(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class Contact(models.Model):
+    name= models.CharField(max_length=50)
+    email = models.CharField(max_length=100)
+    subject = models.CharField(max_length=200)
+    message= models.TextField()
+    date = models.DateField(default=date.today())
+
+    def __str__(self):
+        return f"Message from {self.name} on {self.date}"
+
 
