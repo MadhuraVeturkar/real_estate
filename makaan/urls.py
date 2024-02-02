@@ -15,6 +15,7 @@ urlpatterns = [
 
     path('property-type',views.property_type, name="property_type" ),
     path('property-agent',views.property_agent, name="property_agent" ),
+    path('view-property/<int:id>',views.view_property, name="view_property" ),
     path('about',views.about, name="about" ),
     path('contact',views.contact, name="contact" ),
     path('testimonial',views.testimonial, name="testimonial" ),

@@ -58,6 +58,10 @@ def property_type(request):
 def property_agent(request):
     return render(request,'property-agent.html',{})
 
+def view_property(request,id):
+    property= Properties.objects.get(id=id)
+    return render(request,'view-property.html',{"property":property})
+
 def about(request):
     return render(request,'about.html',{})
 

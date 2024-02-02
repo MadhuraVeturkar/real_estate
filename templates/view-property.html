@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block mainblock %}
+
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;margin-bottom:-2em">
+                    <u><h1 class="mb-3" style="color:white;background-color: #00B98E;border-radius: 10px;">View Property Details</h1></u>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+            <div class="container" style="padding-top: 0rem !important;">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                        <div class="about-img position-relative overflow-hidden p-5 pe-0">
+                            <h1 style="color: white;position: relative;z-index: 2;margin-top:-1em;">{{property.get_property_status_display}} </h1>
+                            <img class="img-fluid w-100" src="{{property.image.url}}">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                        <h1 class="mb-4">{{property.title}}</h1>
+                        <p class="mb-4">{{property.description}}</p>
+                        <p><i class="fa fa-check text-primary me-3"></i><strong>Property Status: {{property.get_property_status_display}}</strong></p>
+                        <p><i class="fa fa-check text-primary me-3"></i><strong>Proper Type: {{property.get_property_type_display}}</strong></p>
+                        <p><i class="fa fa-map-marker-alt text-primary me-2"></i> {{property.location}}</p>
+                        <iframe src="{{property.map_link}}" width="500" height="250" style="margin-top: 2em;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
+
+        
+
+{% endblock mainblock %}
