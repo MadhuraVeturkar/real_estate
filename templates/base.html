@@ -30,6 +30,8 @@
 
     <!-- Template Stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    {% block cssblock %}{% endblock cssblock %}
 </head>
 
 <body>
@@ -65,9 +67,10 @@
                                 <a href="/property-list" class="dropdown-item">Property List</a>
                                 <a href="/property-type" class="dropdown-item">Property Type</a>
                                 <a href="/property-agent" class="dropdown-item">Property Agent</a>
+                                <a href="/testimonial" class="dropdown-item">Testimonial</a>
                             </div>
                         </div>
-                        <a href="/testimonial" class="nav-item nav-link">Testimonial</a>
+                        <a href="/calculator" class="nav-item nav-link">Calculator</a>
                         <a href="/contact" class="nav-item nav-link">Contact</a>
                     </div>
                     {% if user.is_authenticated %}
@@ -202,6 +205,7 @@
 
     <!-- Template Javascript -->
     <script src="{% static 'js/main.js' %}"></script>
+    {% block jsblock %}{% endblock jsblock %}
 </body>
 
 </html>

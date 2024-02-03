@@ -65,6 +65,9 @@ def view_property(request,id):
 def about(request):
     return render(request,'about.html',{})
 
+def calculator(request):
+    return render(request,'calculator.html',{})
+
 def contact(request):
     if request.method =="POST":
         name=request.POST['name']

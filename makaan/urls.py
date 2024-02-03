@@ -19,6 +19,7 @@ urlpatterns = [
     path('about',views.about, name="about" ),
     path('contact',views.contact, name="contact" ),
     path('testimonial',views.testimonial, name="testimonial" ),
+    path('calculator',views.calculator, name="calculator" ),
 
     # path('search/<str:search_type>/<int:id>',views.search, name="search" ),
 ]
